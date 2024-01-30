@@ -1,3 +1,4 @@
+#include <cstring>
 #include <iostream>
 
 using namespace std;
@@ -12,7 +13,16 @@ struct TreeNode {
 
 
 struct TreeNode* constructMaximumBinaryTree(int* nums, int numsSize) {
-  TreeNode* tmp_parent = new TreeNode;
+  int parent[numsSize], leftchild[numsSize], rightchild[numsSize];
+  memset(parent, -1, sizeof(parent));
+  memset(leftchild, -1, sizeof(leftchild));
+  memset(rightchild, -1, sizeof(rightchild));
+
+  int root{0}, last;
+
+  for (int i = 1; i <= numsSize - 1; i++) {
+    
+  }
 }
 
 int main () {
