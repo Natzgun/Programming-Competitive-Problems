@@ -82,7 +82,12 @@ struct TreeNode* constructMaximumBinaryTree(int* nums, int numsSize) {
     // por lo que llegado a ese punto LAST(raiz) ya tenia un hijo derecho y es mayor
     // que el nuevo elemento por lo que ya no cumple ninguna de las condiciones
     // anteriores.
-    } 
+    } else {
+      parent[rightchild[last]] = i;
+      leftchild[i] = rightchild[last];
+      rightchild[last] = i;
+      parent[i] = last;
+    }
   }
 
   parent[root] = -1;
