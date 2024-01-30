@@ -5,18 +5,18 @@
 
  // Definition for a binary tree node.
 struct TreeNode {
-  int data;
+  int val;
   struct TreeNode *left;
   struct TreeNode *right;
 };
 
-typedef struct TreeNode TreeNode ;
+typedef struct TreeNode TreeNode;
 
 void printInorder (TreeNode* node){
   if (node == NULL)
     return;
   printInorder (node->left);
-  printf("%d ",node->data);
+  printf("%d ",node->val);
   printInorder (node->right);
 }
 
@@ -31,16 +31,16 @@ void printTree(TreeNode* root, int depth, char branchChar) {
   for (int i = 0; i < depth * spacesPerLevel; i++)
     printf(" ");
 
-  printf("%d\n", root->data);
+  printf("%d\n", root->val);
   printTree(root->left, depth + 1, '\\');
 }
 
-struct TreeNode* buildCartesianTree(int root, int *nums, int parent[], int leftchild[], int rightchild[]) {
+TreeNode* buildCartesianTree(int root, int *nums, int parent[], int leftchild[], int rightchild[]) {
   if (root == -1)
     return NULL;
 
   TreeNode* tmp = malloc(sizeof(TreeNode));
-  tmp->data = nums[root];
+  tmp->val = nums[root];
 
   tmp->left = buildCartesianTree(leftchild[root], nums, parent, leftchild, rightchild);
   tmp->right = buildCartesianTree(rightchild[root], nums, parent, leftchild, rightchild);
@@ -48,7 +48,7 @@ struct TreeNode* buildCartesianTree(int root, int *nums, int parent[], int leftc
   return tmp;
 }
 
-struct TreeNode* constructMaximumBinaryTree(int* nums, int numsSize) {
+TreeNode* constructMaximumBinaryTree(int* nums, int numsSize) {
   int parent[numsSize], leftchild[numsSize], rightchild[numsSize];
   memset(parent, -1, sizeof(parent));
   memset(leftchild, -1, sizeof(leftchild));
@@ -96,8 +96,8 @@ struct TreeNode* constructMaximumBinaryTree(int* nums, int numsSize) {
 }
 
 int main () {
-  /* int inorder[] = {5, 10, 40, 30, 28}; */
-  int inorder[] = {40, 50, 20, 10, 30};
+  int inorder[] = {5, 10, 40, 30, 28};
+  /* int inorder[] = {40, 50, 20, 10, 30}; */
   /* int inorder[] = {10, 20, 30, 40, 50}; */
   int len = sizeof(inorder)/sizeof(inorder[0]);
   TreeNode* maxBinaryTree = constructMaximumBinaryTree(inorder, len);
