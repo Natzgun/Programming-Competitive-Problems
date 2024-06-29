@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 struct TreeNode {
   int val;
@@ -13,7 +12,7 @@ void transversal(struct TreeNode *root, int *sum, int low, int high) {
 
   transversal(root->left, sum, low, high);
   if (root->val >= low && root->val <= high)
-    *sum = root->val;
+    *sum = *sum + root->val;
   transversal(root->right, sum, low, high);
 }
 

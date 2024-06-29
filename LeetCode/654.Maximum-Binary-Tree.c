@@ -96,8 +96,8 @@ TreeNode* constructMaximumBinaryTree(int* nums, int numsSize) {
 }
 
 int main () {
-  int inorder[] = {5, 10, 40, 30, 28};
-  /* int inorder[] = {40, 50, 20, 10, 30}; */
+  /* int inorder[] = {5, 10, 40, 30, 28}; */
+  int inorder[] = {40, 50, 20, 10, 30};
   /* int inorder[] = {10, 20, 30, 40, 50}; */
   int len = sizeof(inorder)/sizeof(inorder[0]);
   TreeNode* maxBinaryTree = constructMaximumBinaryTree(inorder, len);
